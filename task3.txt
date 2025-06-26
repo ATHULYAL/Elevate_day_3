@@ -1,0 +1,71 @@
+Elevate sql developer internship day 3
+
+SELECT * FROM Users;
++---------+--------------+--------------------+---------+
+| user_id | name         | email              | role    |
++---------+--------------+--------------------+---------+
+|       1 | Anjali Menon | anjali@example.com | student |
+|       2 | Rahul Das    | rahul@example.com  | student |
+|       3 | Maya S       | maya@example.com   | staff   |
+|       4 | Arjun George | arjun@example.com  | student |
+|       5 | Divya Philip | divya@example.com  | staff   |
++---------+--------------+--------------------+---------+
+
+SELECT
+    lost_id,
+    item_name,
+    date_lost,
+    location
+FROM lost_items
+ORDER BY date_lost DESC;
+
++---------+---------------------+------------+----------------+
+| lost_id | item_name           | date_lost  | location       |
++---------+---------------------+------------+----------------+
+|       5 | Keychain            | 2025-06-22 | Hostel A       |
+|       4 | Ray-Ban Sunglasses  | 2025-06-20 | Bus Stop       |
+|       3 | Physics Notebook    | 2025-06-18 | Lecture Hall 3 |
+|       2 | Blue Hoodie         | 2025-06-15 | Cafeteria      |
+|       1 | Samsung Galaxy Buds | 2025-06-10 | Library        |
++---------+---------------------+------------+----------------+
+
+  SELECT * FROM lost_items
+WHERE category_id = 1;
+
+
+  +---------+---------+-------------+---------------------+--------------------------------+------------+----------+
+| lost_id | user_id | category_id | item_name           | description                    | date_lost  | location |
++---------+---------+-------------+---------------------+--------------------------------+------------+----------+
+|       1 |       1 |           1 | Samsung Galaxy Buds | Wireless earbuds in black case | 2025-06-10 | Library  |
++---------+---------+-------------+---------------------+--------------------------------+------------+----------+
+
+    SELECT * FROM lost_items
+WHERE date_lost BETWEEN '2025-06-10' AND '2025-06-20';
+
+    +---------+---------+-------------+---------------------+----------------------------------+------------+----------------+
+| lost_id | user_id | category_id | item_name           | description                      | date_lost  | location       |
++---------+---------+-------------+---------------------+----------------------------------+------------+----------------+
+|       1 |       1 |           1 | Samsung Galaxy Buds | Wireless earbuds in black case   | 2025-06-10 | Library        |
+|       2 |       2 |           4 | Blue Hoodie         | Dark blue hoodie with KTU logo   | 2025-06-15 | Cafeteria      |
+|       3 |       4 |           3 | Physics Notebook    | Green spiral notebook with notes | 2025-06-18 | Lecture Hall 3 |
+|       4 |       3 |           2 | Ray-Ban Sunglasses  | Black frame sunglasses           | 2025-06-20 | Bus Stop       |
++---------+---------+-------------+---------------------+----------------------------------+------------+----------------+
+
+    SELECT * FROM found_items
+WHERE description LIKE '%wallet%';
+
+    +----------+---------+-------------+----------------+----------------------------------+------------+-----------+------------+
+| found_id | user_id | category_id | item_name      | description                      | date_found | location  | is_claimed |
++----------+---------+-------------+----------------+----------------------------------+------------+-----------+------------+
+|        2 |       5 |           2 | Leather Wallet | Brown wallet containing ID cards | 2025-06-16 | Cafeteria |          0 |
++----------+---------+-------------+----------------+----------------------------------+------------+-----------+------------+
+
+    SELECT * FROM lost_items
+WHERE category_id = 2 OR location = 'Cafeteria';
+
+    +---------+---------+-------------+--------------------+--------------------------------+------------+-----------+
+| lost_id | user_id | category_id | item_name          | description                    | date_lost  | location  |
++---------+---------+-------------+--------------------+--------------------------------+------------+-----------+
+|       2 |       2 |           4 | Blue Hoodie        | Dark blue hoodie with KTU logo | 2025-06-15 | Cafeteria |
+|       4 |       3 |           2 | Ray-Ban Sunglasses | Black frame sunglasses         | 2025-06-20 | Bus Stop  |
++---------+---------+-------------+--------------------+--------------------------------+------------+-----------+
